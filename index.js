@@ -5,14 +5,15 @@ import authRouter from "./routes/authRoute.js";
 import bookRouter from "./routes/bookRoute.js";
 import { connectDB } from "./lib/db.js";
 import cors from "cors";
-import cronJob from "./lib/cron.js";
+// import cronJob from "./lib/cron.js";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+app.use(express.json({limit: '50mb'}));
+
 app.use(cors());
-cronJob.start();
-app.use(express.json());
+// cronJob.start();
 app.use('/api/auth' , authRouter);
 app.use('/api/books' , bookRouter);
 

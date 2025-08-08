@@ -5,7 +5,9 @@ import jwt from "jsonwebtoken";
 const router = express.Router();
 
 const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "15d" });
+    const token = jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+    console.log(token);
+    return token;
 }
 
 router.post("/register", async (req, res) => {
